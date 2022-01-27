@@ -103,5 +103,7 @@ integrations:
     displayName: Wazuh
   - projectName: graph-whitehat
     displayName: WhiteHat
+  - projectName: graph-wpengine
+    displayName: WP Engine
   - projectName: graph-whois
     displayName: Whois
