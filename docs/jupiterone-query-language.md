@@ -125,7 +125,7 @@ boundaries obvious to query authors.
 >
 
 **Relationship verbs** are bidirectional
-> 
+>
 > `FIND User THAT HAS Device`
 >
 > and
@@ -200,7 +200,7 @@ is considered a 'filler' word that is ignored by the interpreter.
 > - `CONTRIBUTES TO`
 > - `CONNECTS TO`
 > - `ASSIGNED TO`
-> 
+>
 > The following queries will return the same result:
 >
 > ```j1ql
@@ -233,13 +233,13 @@ Find Person with firstName^='J'
 The above query would return all entities of the `Person` class that have a `firstName` beginning with the character 'J'.
 
 ```j1ql
-Find Host with tag.AccountName~='demo' 
+Find Host with tag.AccountName~='demo'
 ```
 
 The above query would return entities of the `Host` class with any of the following examples of `tag.AccountName`: `xyz_demo`, `demo_xyz`, `abc_demo_xyz`.
 
 !!! warning
-    These string evaluations are case-sensitive. So `'Demo'` and `'demo'` 
+    These string evaluations are case-sensitive. So `'Demo'` and `'demo'`
     will yield distinct sets of results.
 
 ## Date Comparisons
@@ -435,36 +435,37 @@ Return
     Any changes made to the language will be
     backwards compatible.
 
-In situations where it is useful to optionally find related entities
-and include them in the results, J1QL allows for portions of a query to be
-wrapped with a `(` and `)?` to mark that section of the query as an optional
-traversal. This allows for related entities from a graph
-traversal to be combined and for additional constraints to be applied
-to the set of entities.
+In situations where it is useful to optionally find related entities and include
+them in the results, J1QL allows for portions of a query to be wrapped with a
+`(` and `)?` to mark that section of the query as an optional traversal. This
+allows for related entities from a graph traversal to be combined and for
+additional constraints to be applied to the set of entities.
 
 Example query:
 
 ```j1ql
-Find User (that IS Person)?
+Find User (that IS Person)? that OWNS Device
 ```
 
-In the above example, we search for `User` entities
-and optionally traverse an `IS` relationship to a `Person` entity.
-If the relationship exists, the related `Person` entities are
-added to the list of results.
+In the above example, we search for `User` entities and optionally traverse an
+`IS` relationship to a `Person` entity. If the relationship exists, the related
+`Person` entities are combined with the `User` entities and the filter for
+`OWNS` relationships to `Device` entities are applied to the combined set.
 
 **Relationships can still be chained within an optional traversal.** The query
-below will return a list of `Device` entities owned by a `Person` that is a `User`
-and `User` entities that do not have the indirect relationship to the `Device`.
+below will return a list of `Device` entities owned by a `Person` that is a
+`User` and `User` entities that do not have the indirect relationship to the
+`Device`. The `CONNECTS` to `Host` traversal will be then used to further filter
+down the results.
 
 ```j1ql
-Find User (that IS Person that OWNS Device)?
+Find User (that IS Person that OWNS Device)? that CONNECTS to Host
 ```
 
 **Relationships that come after an optional traversal are processed on the
 combined results.** This query searches for Users or UserGroups that directly
-assigned an AccessPolicy granting admin permissions to certain resources,
-or via an AccessRole assigned to the User/UserGroup.
+assigned an AccessPolicy granting admin permissions to certain resources, or via
+an AccessRole assigned to the User/UserGroup.
 
 ```j1ql
 Find (User | UserGroup)
