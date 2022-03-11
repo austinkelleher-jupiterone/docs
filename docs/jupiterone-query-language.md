@@ -453,10 +453,11 @@ In the above example, we search for `User` entities and optionally traverse an
 `OWNS` relationships to `Device` entities are applied to the combined set.
 
 **Relationships can still be chained within an optional traversal.** The query
-below will return a list of `Device` entities owned by a `Person` that is a
-`User` and `User` entities that do not have the indirect relationship to the
-`Device`. The `CONNECTS` to `Host` traversal will be then used to further filter
-down the results.
+below will return a list of `User` entities that optionally relate to a `Person`
+entity that owns a `Device`.
+The `CONNECTS` to `Host` traversal will be then used to further filter
+the `User` entities that relate to the `Host` based
+on the indirect relationship.
 
 ```j1ql
 Find User (that IS Person that OWNS Device)? that CONNECTS to Host
