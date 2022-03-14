@@ -7,13 +7,13 @@ Each JupiterOne account has one of the following two access control configuratio
 
 ## Standard Access Control
 
-**Standard access control** is the default configuration on all JupiterOne accounts. There are two access levels across all resources:
+Standard access control is the default configuration on all JupiterOne accounts. There are two access levels across all resources:
 
-- Users in the **Administrators** group have **full admin access** to all resources
+- Users in the Administrators group have full admin access to all resources
 
-- All other users in other groups have **read-only access** to all resources, as well as the permission to **save queries as questions**.
+- All other users in other groups have read-only access to all resources, as well as the permission to save queries as questions.
 
-Standard access control is similar to the **Top Level Permissions** in Granular Access Control.
+Standard access control is similar to the Top-Level Permissions in Granular Access Control.
 
 ## Granular Access Control
 
@@ -24,6 +24,7 @@ When enabled, to configure access permissions:
 1. Go to **Settings** ![settings](../assets/icons/gear.png) and select **Users & Access** ![users](../assets/icons/users.png).
 2. Find the user group you want to edit and click **Settings** ![settings](../assets/icons/gear.png). 
 3. Click  the **Access Control** ![shield](../assets/icons/shield.png) tab.
+  ​
 
   ![app-permissions](../assets/app-permissions.png)
 
@@ -58,11 +59,11 @@ If you want to set up queries based on sets of filters that you want to then lin
 
 Permissions are configured per group, and any users in a group can perform the actions assigned by the permissions editor.  Permissions may take up to five minutes to propagate.
 
-Each **app level category** has two permissions: **Read-only** and **Admin**. **Admin** permissions will allow all actions included in the **Read-only** permissions for each app.
+Each app level category has two permissions: Read-only and Admin. Admin permissions allow all actions included in the Read-only permissions for each app.
 
-Each **shared permission** has two permissions: **Read** and **Write**. **Read** permissions will allow access to retrieving the resource, while **Write** will allow mutating / editing of the resource. **Write** permission **does not** implicitly grant **Read** permission in this case, unlike how admin permissions grant read-only permissions implicitly in the case of app level permissions.
+Each shared permission has two permissions: **Read** and **Write**. **Read** permissions will allow access to retrieving the resource, while **Write** will allow mutating / editing of the resource. **Write** permission **does not** implicitly grant **Read** permission in this case, unlike how admin permissions grant read-only permissions implicitly in the case of app level permissions.
 
-### Top Level Permissions
+### Top-Level Permissions
 
 **Top level permissions** applies to all apps and pages.
 
